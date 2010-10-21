@@ -19,6 +19,9 @@ end
 @entities = []
 DB = CouchRest.database!("http://#{settings(:server)[:domain]}:#{settings(:server)[:port]}/#{settings(:storage)[:dbname]}")
 require root_path("models/user.rb")
+require root_path("models/feed.rb")
+require root_path("models/feed_entry.rb")
+require root_path("models/user_feed_entry.rb")
 
 require root_path('routes/main.rb')
 require root_path('helpers/main.rb')

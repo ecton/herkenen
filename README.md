@@ -9,7 +9,7 @@ Architecture
 * [sinatra](http://sinatrarb.com/)
 * [CouchDB](http://couchdb.apache.org/)
 * [couchrest](http://github.com/jchris/couchrest)
-* [simple-rss](http://simple-rss.rubyforge.org/)
+* hpricot
 
 Data Model
 ----------
