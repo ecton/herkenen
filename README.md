@@ -6,8 +6,6 @@ Herkenen is a tool aimed at bridging podcast listening across platforms in a sea
 Architecture
 ============
 
-Technologies
-------------
 * [sinatra](http://sinatrarb.com/)
 * [CouchDB](http://couchdb.apache.org/)
 * [couchrest](http://github.com/jchris/couchrest)

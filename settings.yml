@@ -1,0 +1,13 @@
+defaults: &defaults
+  :server:
+    :domain: localhost
+    :port: 5984
+  :storage:  
+    :dbname: herkenen
+:development:
+  <<: *defaults
+  :storage:
+    :dbname: herkenen_dev
+
+:production:
+  <<: *defaults
