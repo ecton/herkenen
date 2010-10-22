@@ -11,6 +11,8 @@ class FeedEntry < CouchRest::ExtendedDocument
   property :date, :cast_as => 'Time'
   property :keywords, :cast_as => ['String']
   
+  timestamps!
+  
   view_by :feed_and_guid, {:map => "
       function (doc) {
         if (doc['couchrest-type'] == 'FeedEntry') {
@@ -28,7 +30,14 @@ class FeedEntry < CouchRest::ExtendedDocument
         }
       }
     "}
-  
+  view_by :date, {  :map => "
+      function (doc) {
+        if (doc['couchrest-type'] == 'FeedEntry') {
+          emit(doc['date'] || doc['created_at'], null);
+        }
+      }
+    "
+  }
 end
 
 @entities << FeedEntry

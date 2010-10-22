@@ -1,6 +1,7 @@
 class Feed < CouchRest::ExtendedDocument
   use_database DB
   property :url
+  property :pic_url
   property :title
   property :description
   property :language
@@ -8,6 +9,8 @@ class Feed < CouchRest::ExtendedDocument
   property :explicit
   
   property :keywords, :cast_as => ['String']
+  
+  timestamps!
   
   view_by :url
   view_by :language

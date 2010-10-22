@@ -1,0 +1,30 @@
+%html
+  %head
+    %link{:href => 'http://fonts.googleapis.com/css?family=Philosopher&subset=latin', :rel => 'stylesheet', :type => 'text/css'}/
+    %link{:href => 'http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&subset=latin', :rel => 'stylesheet', :type => 'text/css'}/
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/960gs.css"}/
+    %link{:rel => "stylesheet", :type => "text/css", :href => "/style.css"}/
+    %title
+      Herkenen
+      - if params[:title]
+        \-
+        = params[:title]
+  %body
+    .container_12
+      %h1.grid_6 Herkenen
+      .grid_6.nav
+        %a{:href => "/login"} Log In/Sign Up
+        •
+        %a{:href => "/about"} About
+      .clear
+      %hr
+      
+      != yield
+    
+      .clear
+      %center.copy
+        &copy; 2010 NilObject Consulting.
+        %br
+        All rights reserved.
+        %br
+        

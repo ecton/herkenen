@@ -1,0 +1,55 @@
+body {
+	background-color: #D2C696;
+	color: #311915;
+  	font-family: "Nobile", arial, sans-serif;
+}
+
+a, a:active, a:visited {
+	color: #A87534;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #82996F;
+	text-decoration: underline;
+}
+
+.alternate {
+	background-color: #82996F;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Philosopher", arial, serif;
+  margin-top: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 5px;
+  color: #3F1B0F;
+}
+
+h1 {
+  font-size: 36pt;
+  font-weight: bold;
+  text-align: left;
+  line-height: 50pt;
+}
+
+hr {
+	color: #82996F;
+	height: 0px;
+	border: thin dotted #82996F;
+}
+
+.nav {
+	line-height: 50pt;
+	text-align: right;
+}
+
+.copy {
+  font-family: 'Philosopher', arial, serif;
+  color: #82996F;
+  font-size: smaller;
+}
+
+.small {
+	font-size: smaller;
+}

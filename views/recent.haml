@@ -1,0 +1,16 @@
+%h3 Recent Podcasts
+
+- @entries.each do |entry|
+  .grid_1
+    %img{:src => @feeds[entry.feed_id].pic_url, :width => 60, :height => 60}
+    %a{:href => "/login"} + Save 
+  .grid_9
+    %p
+      %a{:href => "/podcast/#{entry.id}"}
+        =entry.title
+    %p.small
+      =entry.description
+  %p.grid_2
+    =relative_time(entry.date)
+  .clear
+  %hr

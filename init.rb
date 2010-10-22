@@ -23,6 +23,8 @@ require root_path("models/feed.rb")
 require root_path("models/feed_entry.rb")
 require root_path("models/user_feed_entry.rb")
 
+require root_path('lib','herkenen.rb')
+
 require root_path('routes/main.rb')
 require root_path('helpers/main.rb')
 require root_path('routes/api.rb')
