@@ -7,6 +7,9 @@ class UserFeedEntry < CouchRest::ExtendedDocument
   
   property :percent_complete
   property :current_offset
+  property :total_length
+  
+  timestamps!
   
   view_by :user_id
   view_by :incomplete_user_id, {
@@ -15,6 +18,14 @@ class UserFeedEntry < CouchRest::ExtendedDocument
         if (doc['percent_complete'] < 100) {
           emit(doc['user_id'], null);
         }
+      }
+    }"
+  }
+  
+  view_by :user_and_feed_entry_id, {
+    :map => "function (doc) {
+      if (doc['couchrest-type'] == 'UserFeedEntry') {
+        emit([doc['user_id'],doc['feed_entry_id']], null);
       }
     }"
   }

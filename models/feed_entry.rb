@@ -21,6 +21,8 @@ class FeedEntry < CouchRest::ExtendedDocument
       }
     "
   }
+  
+  view_by :feed_id
   view_by :keyword, {:map => "
       function(doc) {
         if (doc['couchrest-type'] == 'Feed' && doc['keywords']) {
@@ -30,6 +32,7 @@ class FeedEntry < CouchRest::ExtendedDocument
         }
       }
     "}
+    
   view_by :date, {  :map => "
       function (doc) {
         if (doc['couchrest-type'] == 'FeedEntry') {

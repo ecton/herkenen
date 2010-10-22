@@ -1,0 +1,60 @@
+.grid_4
+  %img{:src => @feed.pic_url, :width => 270, :height => 270}/
+  #player
+  %a#play{:href => "javascript:play(); return false"} Play
+  %a#pause{:href => "javascript:pause(); return false"} Pause
+  #pcent
+  :javascript
+    var offset = #{user_playlist_offset(@entry) || 0};
+    var total = 0;
+    var offsetTimer = null;
+    var percent = 0;
+    $(function () {
+      $("#player").jPlayer( {
+        swfPath: "/jQuery.jPlayer/",
+        ready: function () {
+          this.element.jPlayer("setFile", "#{@entry.mp3_url}");
+        }
+      }).jPlayer("onProgressChange", function(lp,ppr,ppa,pt,tt) {
+        if (offsetTimer != null) {
+          offset = pt;
+          total = tt;
+          percent = ppa;
+          $("#pcent").text(parseInt(ppa)+"%");
+        }
+      });
+    
+      $("#pause").hide();
+    });
+    
+    function play() {
+      $("#play").fadeOut(function(){
+        $("#pause").fadeIn();
+      });
+      alert(offset);
+      $("#player").jPlayer("playHeadTime", offset);
+      if (offsetTimer == null) {
+        offsetTimer = setInterval(function () {postProgress();}, 30000);
+      }
+    }
+    
+    function pause() {
+      $("#pause").fadeOut(function(){
+        $("#play").fadeIn();
+      });
+      $("#player").jPlayer("pause");
+      clearInterval(offsetTimer);
+      offsetTimer = null;
+      postProgress();
+    }
+    
+    function postProgress() {
+      $.post("/podcast/#{@entry.id}/progress", {'offset': offset, 'total': total});
+    }
+.grid_8
+  %h3= @entry.title
+  %p= @entry.date || @entry.created_at
+  %h4
+    Feed: 
+    %a{:href => "/feed/#{@feed.id}"}= @feed.title
+  %p= @entry.description

@@ -1,0 +1,24 @@
+%h3= @list_name
+
+- @entries.each do |entry|
+  .grid_1
+    %img{:src => @feeds[entry.feed_id].pic_url, :width => 60, :height => 60}
+    -status = user_playlist_status(entry)
+    -if status.nil?
+      %a{:href => @user ? "/save/#{entry.id}" : "/login"} + Save 
+    -elsif status >= 100
+      Played
+    -elsif status == 0
+      Queued
+    -else
+      = status.to_s + "%"
+  .grid_9
+    %p
+      %a{:href => "/podcast/#{entry.id}"}
+        =entry.title
+    %p.small
+      =entry.description
+  %p.grid_2
+    =relative_time(entry.date || entry.created_at)
+  .clear
+  %hr

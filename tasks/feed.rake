@@ -17,9 +17,14 @@ namespace :feed do
   
   desc "Add a feed"
   task :add, [:url] do |task, args|
-    feed = Feed.new(:url => args.url)
-    feed.save
+    feed = Feed.by_url(:key => args.url).first
+    if feed
+      puts "Found existing feed."
+    else
+      feed = Feed.new(:url => args.url)
+      feed.save
+    end
     
-    puts "New ID: #{feed.id}"
+    puts "ID: #{feed.id}"
   end
 end

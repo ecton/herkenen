@@ -1,0 +1,42 @@
+-if params[:error]
+  %p.error.grid_12.center= params[:error]
+%form{:action => "/login", :method => "post"}
+  .grid_12.center
+    %h3 Log In
+  .clear
+  .grid_3.push_3.right
+    %b Email Address:
+  .grid_3.push_3
+    %input{:type => 'text', :name => 'email', :value => params[:email]}/
+  .clear
+  .grid_3.push_3.right
+    %b Password:
+  .grid_3.push_3
+    %input{:type => 'password', :name => 'password'}/
+  .clear
+  .grid_3.push_6
+    %input{:type => 'submit', :name => 'login', :value => 'Log In'}/
+  .clear
+%hr
+%form{:action => "/signup", :method => "post"}
+  .grid_12.center
+    %h3 Sign Up
+  .clear
+  .grid_3.push_3.right
+    %b Email Address:
+  .grid_3.push_3
+    %input{:type => 'text', :name => 'email', :value => params[:email]}/
+  .clear
+  .grid_3.push_3.right
+    %b Password:
+  .grid_3.push_3
+    %input{:type => 'password', :name => 'password'}/
+  .clear
+  .grid_3.push_3.right
+    %b Confirm Password:
+  .grid_3.push_3
+    %input{:type => 'password', :name => 'password2'}/
+  .clear
+  .grid_3.push_6
+    %input{:type => 'submit', :name => 'login', :value => 'Sign Up'}/
+  .clear
